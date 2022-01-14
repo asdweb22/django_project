@@ -1,0 +1,14 @@
+{% extends 'after_login_base.html' %}
+
+{% block title %}user Dashboard{% endblock title %}
+
+{% block body %}
+    welcome {{sdata}} in your dashboard
+
+    {% for r in res %}
+        {{r.id}}
+        {{r.first_name}}
+    {% endfor %}
+{% endblock body %}
+
+

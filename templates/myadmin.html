@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}myadmin{% endblock title %}
+
+{% block body %}
+
+<div class="container bg-light w-60 mx-auto mt-5 px-5 rounded">
+    <h2 class="text-center">User Data</h2>
+<table class="table table-hover mt-5 rounded shadow bg-warning ">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>password</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+
+    {% for user in userdata %}
+    <tbody>
+    <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.password}}</td>
+        <td>
+            <a href="find?q={{user.id}}" class="btn btn-success">Edit</a>
+            <a href="delete?q={{user.id}}" class="btn btn-danger">X</a>
+            
+        </td>
+    </tr>
+</tbody>
+    {% endfor %}
+</table>
+<br>
+</div>
+{% endblock body %}

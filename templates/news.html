@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}news{% endblock title %}
+
+{% block body %}
+
+<div class="container-fluid px-0">
+    <img src="https://source.unsplash.com/1200x400/?news" class="d-block  mx-0 w-100">
+    <h3 class=" my-3 py-2 text-center">News Api</h3>
+</div>
+
+
+
+<div class="container bg-light my-2 py-5">
+    <span class="bg-primary text-white mx-2 py-2 px-2 rounded">India  <b>in</b> </span>
+    <span class="bg-primary text-white mx-2 py-2 px-2 rounded">Argentina <b>ar</b> </span>
+    <span class="bg-primary text-white mx-2 py-2 px-2 rounded">Australia <b>au</b> </span>
+    <span class="bg-primary text-white mx-2 py-2 px-2 rounded">United Kingdom <b>uk</b> </span>
+    <span class="bg-primary text-white mx-2 py-2 px-2 rounded">Singapore <b>sg</b> </span>
+        
+    <form class="d-flex  py-5 px-5" action="news" method="post">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" name="search" placeholder="Search which country news would you like to see" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+
+    </form>
+</div>
+
+<div class="container mb-5">
+    <br><h3 class="text-center">{{Country}}</h3>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for title,description,image,url in news  %}
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="{{ image }}" class="d-block w-100" alt="news">
+
+                <div class="card-body">
+                    <a href="{{url}}"><p class="card-text">{{title}} </p></a> 
+                    <p class="card-text">{{description}} </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock body %}

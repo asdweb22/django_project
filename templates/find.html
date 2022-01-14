@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+
+{% block title %}update Register{% endblock title %}
+
+{% block body %}
+
+<form action="updatedata" class="bg-light mx-auto my-5 py-3 px-5 w-50 " method="POST">
+    {% csrf_token %}
+    <h2 class="text-center ">Registration form</h2><br>
+    <div class="mb-3">
+        <label for="txtid" class="form-label">First Name</label>
+        <input type="text" class="form-control" name="txtid" value="{{s.id}}" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="First Name" class="form-label">First Name</label>
+        <input type="text" class="form-control" name="fname" value="{{s.first_name}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="Last Name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" name="lname" value="{{s.last_name}}" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" name="username" value={{s.username}} required>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email" value={{s.email}}required>
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="pass" value={{s.password}} required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+{% endblock body %}

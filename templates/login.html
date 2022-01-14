@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock title %}
+
+{% block body %}
+    
+    <div class="container ">
+        <form action="login" class="bg-light mx-auto my-5 py-3 px-5 w-50 " method="POST">
+        {% csrf_token %}
+            <h2 class="text-center ">Login form</h2><br>
+            
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" > 
+            </div>
+            
+
+            
+            
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="pass" >
+            </div>
+
+            <input type="checkbox" name="chk" id="">  Remember me
+            <br><br>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a href="register">Go for registration</a>
+        </form>
+        
+        <div>
+            {% for message in messages  %}
+                <h3>{{message}}</h3>
+            {% endfor %}
+        </div>
+    </div>
+
+   
+{% endblock body %}
+    
